@@ -25,14 +25,13 @@ public class AlumnoData {
     private Connection con = null;
 
     public AlumnoData() {
-
         con = Conexion.getConexion();
     }
 
     
     public void guardarAlumno(Alumno alumno) {
 
-        String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado)"
+        String sql = "INSERT INTO alumno (dni, apellido, nombre, fechaNac, estado)"
                 + "VALUES(?, ?, ?, ?, ?)";
 
         try {
@@ -63,7 +62,7 @@ public class AlumnoData {
 
     public void modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNacimiento = ?" //buscar nombre de columna fecha nac
+        String sql = "UPDATE alumno SET dni = ?, apellido = ?, nombre = ?, fechaNac = ?" //buscar nombre de columna fecha nac
                 + "WHERE idAlumno = ?";
 
         try {
