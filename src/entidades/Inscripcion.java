@@ -59,4 +59,5 @@ public class Inscripcion {
         return "Inscripcion{" + "IDinscripcion=" + IDinscripcion + ", alumno=" + alumno + ", materia=" + materia + ", nota=" + nota + '}';
     }
    
+    
 }

@@ -26,6 +26,7 @@ public class Materia {
         this.anio = anio;
         this.estado = estado;
     }
+    
 
     public int getIDmateria() {
         return IDmateria;
