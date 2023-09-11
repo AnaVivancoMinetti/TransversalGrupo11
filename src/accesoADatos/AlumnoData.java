@@ -157,10 +157,31 @@ public class AlumnoData {
         }
         return alumno;
     }
-
+ public List<Alumno> listarAlumnos(){
+    List<Alumno> alumnos = new ArrayList<>();
+    try{
+        String sql = "SELECT * FROM alumno WHERE estado = 1";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+        Alumno alumno = new Alumno();
+        alumno.setIDalumno(rs.getInt("idAlumno"));
+        alumno.setDNI(rs.getInt("dni"));
+        alumno.setApellido(rs.getString("apellido"));
+        alumno.setNombre(rs.getString("nombre"));
+        alumno.setFechaN(rs.getDate("fechaNacimiento").toLocalDate());
+        alumno.setEstado(rs.getBoolean("estado"));
+        alumno.add (alumno);
+    }
+      ps.close();
       
-   
-    
+    }catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno"+ex.getMessage());
+    }
+    return alumnos;
+}
+      
+       
 }
 
 
