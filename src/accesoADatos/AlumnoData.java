@@ -11,6 +11,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -171,7 +173,7 @@ public class AlumnoData {
         alumno.setNombre(rs.getString("nombre"));
         alumno.setFechaN(rs.getDate("fechaNacimiento").toLocalDate());
         alumno.setEstado(rs.getBoolean("estado"));
-        alumno.add (alumno);
+        alumnos.add (alumno);
     }
       ps.close();
       
