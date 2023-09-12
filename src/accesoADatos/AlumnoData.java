@@ -49,7 +49,7 @@ public class AlumnoData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 alumno.setIDalumno(rs.getInt(1));
-                JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de alumnos");/*???*/
+                JOptionPane.showMessageDialog(null, "Se guardó el alumno exitosamente");/*???*/
             }
 
             ps.close();

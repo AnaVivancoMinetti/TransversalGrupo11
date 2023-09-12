@@ -8,20 +8,20 @@ public class Materia {
     
     private int IDmateria;
     private String nombreMat;
-    private LocalDate anio;
+    private int anio;
     private boolean estado;
 
     public Materia() {
     }
 
-    public Materia(int IDmateria, String nombreMat, LocalDate anio, boolean estado) {
+    public Materia(int IDmateria, String nombreMat, int anio, boolean estado) {
         this.IDmateria = IDmateria;
         this.nombreMat = nombreMat;
         this.anio = anio;
         this.estado = estado;
     }
 
-    public Materia(String nombreMat, LocalDate anio, boolean estado) {
+    public Materia(String nombreMat, int anio, boolean estado) {
         this.nombreMat = nombreMat;
         this.anio = anio;
         this.estado = estado;
@@ -44,11 +44,11 @@ public class Materia {
         this.nombreMat= nombreMat;
     }
 
-    public LocalDate getAnio() {
+    public int getAnio() {
         return anio;
     }
 
-    public void setAnio(LocalDate anio) {
+    public void setAnio(int anio) {
         this.anio = anio;
     }
 
