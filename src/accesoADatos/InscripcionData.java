@@ -1,5 +1,6 @@
 package accesoADatos;
 
+import Entidades.Alumno;
 import Entidades.Inscripcion;
 import Entidades.Materia;
 import java.sql.Connection;
@@ -229,6 +230,33 @@ public class InscripcionData {
         }
     }
     
+     public List<Alumno> obtenerAlumnosPorMateria(int idMateria) {
+        List<Alumno> alumnos = new ArrayList<Alumno>();
+
+        try {
+            String sql = "SELECT inscripcion.idMateria, nombre, anio, materia "
+                    + "FROM inscripcion JOIN materia ON inscripcion.idMateria = materia.idMateria "
+                    + "WHERE inscripcion.idMateria = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Alumno alumno = new Alumno();
+                alumno.setNombre(rs.getString("nombre"));
+
+                alumnos.add(alumno);
+                 }
+                ps.close();
+                
+            }catch (SQLException ex) {
+       JOptionPane.showMessageDialog(null, "ERROR AL ACCEDER A LOS ALUMNOS POR MATERIA"); 
+    }
     
+            return alumnos;
+        }
+      
 
 }
