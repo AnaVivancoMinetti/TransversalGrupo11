@@ -158,5 +158,28 @@ public class InscripcionData {
         }
         return materia;
     } 
+   public List<Materia> obtenerMateriaCursadaNOCursadas(int id){
+       List<Materia> materia = obtenerMateriaCursada(id); 
+       List<Materia> materiaNoCursada= new ArrayList<Materia>();
+       
+        try {
+            String sql = "SELECT * FROM materia WHERE idMateria NOT IN "
+                + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+             ResultSet rs= ps.executeQuery();
+             while(rs.next()){
+            Materia mate = new Materia();
+            mate.setIDmateria(rs.getInt("idMateria"));
+            mate.setNombre(rs.getString("nombre"));
+            mate.setAnio(rs.getInt("anio"));
+            materiaNoCursada.add(mate);
+             }
+             rs.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "ERROR AL OBTENER LAS MATERIAS NO CURSADAS");
+        }
+        return materiaNoCursada;
+   } 
     
 }
