@@ -7,8 +7,12 @@ package vistas;
 
 import Entidades.Alumno;
 import accesoADatos.AlumnoData;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
+import java.time.Instant;
+import com.toedter.calendar.JDateChooser;
 
 /**
  *
@@ -198,17 +202,19 @@ public class Alumnos extends javax.swing.JInternalFrame {
         }
             int dni = Integer.parseInt(jtfDNI.getText());
             
-            
-            Alumno alu = AlumnoData.buscarAlumnoPorDni(dni);
+            AlumnoData alumnoData = new AlumnoData(); 
+            Alumno alu = alumnoData.buscarAlumnoPorDni(dni); 
             jtfApellido.setText(alu.getApellido());
             jtfNombre.setText(alu.getNombre());
             jrbEstado.setSelected(alu.isEstado());
-            //jdcNacimiento.setDate(alu.getFechaN().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-            //jdcNacimiento.setCalendar(clndr);
-            jdcNacimiento.setDate(fechaNac.toLocalDate());
-            
-              
-            
+          jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
+            alu.toString();
+          //Date fechaNac=jdcNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();           
+//            LocalDate fechaNac = alu.getFechaN();
+//            Instant instant = fechaNac.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
+//            Date fechaNacDate = (Date) Date.from(instant);
+//            jdcNacimiento.setDate(fechaNacDate);
+//            
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "DNI inválido");
             jtfDNI.setText("");

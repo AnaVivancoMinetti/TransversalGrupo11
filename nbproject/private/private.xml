@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CRISTIAN%20SALINAS/Desktop/GIT/TransversalGrupo11/src/accesoADatos/MateriaData.java</file>
-            <file>file:/C:/Users/CRISTIAN%20SALINAS/Desktop/GIT/TransversalGrupo11/src/entidades/Inscripcion.java</file>
-            <file>file:/C:/Users/CRISTIAN%20SALINAS/Desktop/GIT/TransversalGrupo11/src/accesoADatos/AlumnoData.java</file>
-            <file>file:/C:/Users/CRISTIAN%20SALINAS/Desktop/GIT/TransversalGrupo11/src/accesoADatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/entidades/Alumno.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/CargaNotas.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/Materia.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/accesoADatos/InscripcionData.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/Alumnos.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/alumnosPorMateria.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/FormInscripcion.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/vistas/menuPrincipal.java</file>
+            <file>file:/C:/Users/Usuario/Documents/GitHub/TransversalGrupo11/src/accesoADatos/AlumnoData.java</file>
         </group>
     </open-files>
 </project-private>
