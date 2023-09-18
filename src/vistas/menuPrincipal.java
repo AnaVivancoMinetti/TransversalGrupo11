@@ -144,7 +144,14 @@ public class menuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiFormAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiFormAlumnoActionPerformed
-        // TODO add your handling code here:
+        
+        jpEscritorio.removeAll();
+        jpEscritorio.repaint();
+        Alumnos formAlu = new Alumnos();
+        formAlu.setVisible(true);
+        jpEscritorio.add(formAlu);
+        //jpEscritorio.moveToFront(formAlu);
+        
     }//GEN-LAST:event_jmiFormAlumnoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

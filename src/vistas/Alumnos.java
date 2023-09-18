@@ -54,6 +54,8 @@ public class Alumnos extends javax.swing.JInternalFrame {
         jrbEstado = new javax.swing.JRadioButton();
         jdcNacimiento = new com.toedter.calendar.JDateChooser();
 
+        setClosable(true);
+
         jLabel1.setText("Alumno");
 
         jLabel2.setText("Apellido");
@@ -80,12 +82,32 @@ public class Alumnos extends javax.swing.JInternalFrame {
         });
 
         jbNuevo.setText("Nuevo");
+        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevoActionPerformed(evt);
+            }
+        });
 
         jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jrbEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,24 +218,30 @@ public class Alumnos extends javax.swing.JInternalFrame {
 
         try {
 
-            if(jtfDNI.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "No debe dejar el campo vacío");
-            
-        }
+            if (jtfDNI.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No debe dejar el campo vacío");
+            }
+
             int dni = Integer.parseInt(jtfDNI.getText());
-            
-            AlumnoData alumnoData = new AlumnoData(); 
-            Alumno alu = alumnoData.buscarAlumnoPorDni(dni); 
-            jtfApellido.setText(alu.getApellido());
-            jtfNombre.setText(alu.getNombre());
-            jrbEstado.setSelected(alu.isEstado());
-          jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
-            alu.toString();
-          //Date fechaNac=jdcNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();           
+
+            AlumnoData alumnoData = new AlumnoData();
+
+            Alumno alu = alumnoData.buscarAlumnoPorDni(dni);
+            if (alu != null) {
+                jtfApellido.setText(alu.getApellido());
+                jtfNombre.setText(alu.getNombre());
+                jrbEstado.setSelected(alu.isEstado());
+                jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
+                alu.toString();
+                //Date fechaNac=jdcNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();           
 //            LocalDate fechaNac = alu.getFechaN();
 //            Instant instant = fechaNac.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
 //            Date fechaNacDate = (Date) Date.from(instant);
 //            jdcNacimiento.setDate(fechaNacDate);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró alumno con ese DNI.");
+            }
+
 //            
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "DNI inválido");
@@ -223,6 +251,92 @@ public class Alumnos extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jbBuscarActionPerformed
 
+    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+
+        jtfDNI.setText("");
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jrbEstado.setSelected(false);
+        jdcNacimiento.setDate(null);
+
+    }//GEN-LAST:event_jbNuevoActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        //eliminarAlumno(int id)
+        try {
+
+            int id = Integer.parseInt(jtfDNI.getText());
+            AlumnoData alumnoData = new AlumnoData();
+            Alumno alu = alumnoData.buscarAlumno(id);
+
+            if (alu != null) {
+                alumnoData.eliminarAlumno(id);
+                jtfDNI.setText("");
+                JOptionPane.showMessageDialog(null, "Alumno eliminado con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Alumno no encontrado.");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID válido.");
+        }
+
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        
+        //guardarAlumno( alumno)
+        
+       // Alumno alu = new Alumno();
+         
+//        if (jtfDNI.getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(this, "No debe dejar el campo vacío");
+//            }
+//
+//            int dni = Integer.parseInt(jtfDNI.getText());
+//
+//            AlumnoData alumnoData = new AlumnoData();
+//
+//            Alumno alu = alumnoData.buscarAlumnoPorDni(dni);
+//            if (alu == null) {
+//                
+            
+//        int dni = Integer.parseInt(JTFCODIGO.getText());
+//    String descripcion = JTFDESCRIPCION.getText();
+//    double precio = Double.parseDouble(JTFPRECIO.getText());
+//    int stock = Integer.parseInt(JTFSTOCK.getText());
+//   String rubroSeleccionado = (String) JCBRUBRO.getSelectedItem();
+//    Categoria rubro = Categoria.valueOf(rubroSeleccionado);
+//
+//    Producto productoExistente = buscarPorCodigo(codigo);
+//        
+//        if (productoExistente != null) {
+//        // Actualizar producto existente
+//        productoExistente.setDescripcion(descripcion);
+//        productoExistente.setPrecio(precio);
+//        productoExistente.setStock(stock);
+//        productoExistente.setRubro(rubro);
+//        mostrarProductoEnInterfaz(productoExistente);
+//        JOptionPane.showMessageDialog(this, "Producto actualizado con éxito.");
+//    } else {
+//        // Agregar nuevo producto
+//        Producto nuevoProducto = new Producto(codigo, descripcion, precio, stock, rubro);
+//        productos.add(nuevoProducto); // Agregar el nuevo producto a la lista
+//        mostrarProductoEnInterfaz(nuevoProducto); // Mostrar el producto agregado
+//        limpiarCampos();
+//        JOptionPane.showMessageDialog(this, "Producto agregado con éxito.");
+//    }
+            }
+        
+        
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
