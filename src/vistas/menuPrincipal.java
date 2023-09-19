@@ -39,7 +39,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jmiFormAlumno = new javax.swing.JMenuItem();
         jmiFormMateria = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiMateria = new javax.swing.JMenuItem();
         jmiNotas = new javax.swing.JMenu();
         jmiInscripciones = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -88,13 +88,13 @@ public class menuPrincipal extends javax.swing.JFrame {
 
         jmiFormMateria.setText("Materia");
 
-        jMenuItem3.setText("Formulario de Materia");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jmiMateria.setText("Formulario de Materia");
+        jmiMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jmiMateriaActionPerformed(evt);
             }
         });
-        jmiFormMateria.add(jMenuItem3);
+        jmiFormMateria.add(jmiMateria);
 
         jMenuBar1.add(jmiFormMateria);
 
@@ -154,9 +154,16 @@ public class menuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmiFormAlumnoActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    private void jmiMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMateriaActionPerformed
+        
+        jpEscritorio.removeAll();
+        jpEscritorio.repaint();
+        MateriaView formMat = new MateriaView();
+        formMat.setVisible(true);
+        jpEscritorio.add(formMat);
+        //jpEscritorio.moveToFront(formMat);        
+        
+    }//GEN-LAST:event_jmiMateriaActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
@@ -209,12 +216,12 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jmiAlumnoMateria;
     private javax.swing.JMenuItem jmiFormAlumno;
     private javax.swing.JMenu jmiFormMateria;
     private javax.swing.JMenuItem jmiInscripciones;
+    private javax.swing.JMenuItem jmiMateria;
     private javax.swing.JMenu jmiNotas;
     private javax.swing.JPanel jpEscritorio;
     // End of variables declaration//GEN-END:variables

@@ -5,16 +5,20 @@
  */
 package vistas;
 
+import accesoADatos.MateriaData;
+import javax.swing.JOptionPane;
+import Entidades.Materia;
+
 /**
  *
  * @author User
  */
-public class Materia extends javax.swing.JInternalFrame {
+public class MateriaView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Materia
      */
-    public Materia() {
+    public MateriaView() {
         initComponents();
     }
 
@@ -33,15 +37,17 @@ public class Materia extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
+        jbNuevo = new javax.swing.JButton();
+        jbEliminar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jtfCodigo = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
         jtfAño = new javax.swing.JTextField();
         jrbEstado = new javax.swing.JRadioButton();
+
+        setClosable(true);
 
         jLabel1.setText("Materia");
 
@@ -53,15 +59,20 @@ public class Materia extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Estado");
 
-        jButton1.setText("Buscar");
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Nuevo");
+        jbNuevo.setText("Nuevo");
 
-        jButton3.setText("Eliminar");
+        jbEliminar.setText("Eliminar");
 
-        jButton4.setText("Guardar");
+        jbGuardar.setText("Guardar");
 
-        jButton5.setText("Salir");
+        jbSalir.setText("Salir");
 
         jtfCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +102,7 @@ public class Materia extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                                .addComponent(jButton1)))
+                                .addComponent(jbBuscar)))
                         .addGap(52, 52, 52))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,13 +111,13 @@ public class Materia extends javax.swing.JInternalFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jbNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(jbEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(jbGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jbSalir)
                 .addGap(16, 16, 16))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(161, 161, 161)
@@ -123,7 +134,7 @@ public class Materia extends javax.swing.JInternalFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jButton1)
+                            .addComponent(jbBuscar)
                             .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -137,10 +148,10 @@ public class Materia extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5)
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))
+                            .addComponent(jbSalir)
+                            .addComponent(jbGuardar)
+                            .addComponent(jbEliminar)
+                            .addComponent(jbNuevo))
                         .addGap(19, 19, 19))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -168,19 +179,46 @@ public class Materia extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCodigoActionPerformed
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+
+        int id = Integer.parseInt(jtfCodigo.getText());
+        MateriaData materiaData = new MateriaData();
+        Materia materia = materiaData.buscarMateria(id);
+
+        try {
+
+            if (jtfCodigo.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el código de la materia");
+            }
+
+            if (materia == null) {
+                JOptionPane.showMessageDialog(null, "No se encontró materia con el código ingresado");
+            } else {
+                jtfNombre.setText(materia.getNombre());
+                jtfAño.setText(materia.getAnio() + "");
+                jrbEstado.setSelected(materia.isEstado());
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número");
+            jtfCodigo.setText("");
+        }
+
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbEliminar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbNuevo;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JRadioButton jrbEstado;
     private javax.swing.JTextField jtfAño;
     private javax.swing.JTextField jtfCodigo;

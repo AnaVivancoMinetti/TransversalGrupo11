@@ -91,6 +91,7 @@ public class MateriaData {
         }
 
     }
+
     public void eliminarMateria(int id) {
         String sql = "UPDATE materia SET estado=0 WHERE idMateria=?";
 
@@ -107,29 +108,28 @@ public class MateriaData {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error,la materia no se pudo eliminar" + e.getMessage());
         }
-}
-    public List<Materia>ListarMateria(){
-     List<Materia> materias = new ArrayList<>();
-    try{
-        String sql = "SELECT * FROM materia WHERE estado = 1";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()){
-        Materia materia= new Materia();
-        materia.setIDmateria(rs.getInt("idMateria"));
-        materia.setNombre(rs.getString("nombre"));
-        materia.setAnio(rs.getInt("año"));
-        materia.setEstado(rs.getBoolean("estado"));
-        materias.add (materia);
     }
-      ps.close();
-      
-    }catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex.getMessage());
-    }
-    return materias;
-    
-    }
-}
-    
 
+    public List<Materia> ListarMateria() {
+        List<Materia> materias = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM materia WHERE estado = 1";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+                materia.setIDmateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("año"));
+                materia.setEstado(rs.getBoolean("estado"));
+                materias.add(materia);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia" + ex.getMessage());
+        }
+        return materias;
+
+    }
+}

@@ -291,60 +291,57 @@ public class Alumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        
+
         dispose();
-        
+
     }//GEN-LAST:event_jbSalirActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        
+
 //        guardarAlumno(alumno)
-        
 //        Alumno alu = new Alumno();
-         
         if (jtfDNI.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No debe dejar el campo vacío");
-            }
+            JOptionPane.showMessageDialog(this, "No debe dejar el campo vacío");
+        }
 
-            int dni = Integer.parseInt(jtfDNI.getText());
+        int dni = Integer.parseInt(jtfDNI.getText());
 
-            AlumnoData alumnoData = new AlumnoData();
+        AlumnoData alumnoData = new AlumnoData();
 
-            Alumno alu = alumnoData.buscarAlumnoPorDni(dni);
-            if (alu != null) {
- int opcion=JOptionPane.showConfirmDialog(this,   "El alumno ya existe. ¿Desea actualizar los datos?",
-            "Confirmar",
-            JOptionPane.YES_NO_OPTION );
- if(opcion==JOptionPane.YES_OPTION){
-     alu.setApellido(jtfApellido.getText());
-     alu.setNombre(jtfNombre.getText());
-     alu.setEstado(jrbEstado.isSelected());
+        Alumno alu = alumnoData.buscarAlumnoPorDni(dni);
+        if (alu != null) {
+            int opcion = JOptionPane.showConfirmDialog(this, "El alumno ya existe. ¿Desea actualizar los datos?",
+                    "Confirmar",
+                    JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.YES_OPTION) {
+                alu.setApellido(jtfApellido.getText());
+                alu.setNombre(jtfNombre.getText());
+                alu.setEstado(jrbEstado.isSelected());
 //     alu.setFechaN(Date.valueOf(alu.getFechaN());
 //     alu.setFechaN(LocalDate.valueOf(jdcNacimiento.getDate()));
 //     alu.setFechaN(jdcNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 //     alu.setFechaN(jdcNacimiento.getDate());
 //     alu.setFechaN(LocalDate.ofInstant(jdcNacimiento.getDate().toInstant(), ZoneId.systemDefault()));
 //     alu.setFechaN(LocalDate.valueOf(jdcNacimiento.getDate()));
-       jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
-        alu.toString();  
-       alumnoData.modificarAlumno(alu);
-   
+                jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
+                alu.toString();
+                alumnoData.modificarAlumno(alu);
+
 //        
-    } else {
+            } else {
 //        // Agregar nuevo Aumno
- alu.setApellido(jtfApellido.getText());
-     alu.setNombre(jtfNombre.getText());
-     alu.setEstado(jrbEstado.isSelected());
-      jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
-        alu.toString();  
-        JOptionPane.showMessageDialog(this, "Alumno agregado con éxito.");
-        alumnoData.guardarAlumno(alu);
- }
-               
-            }  
+                alu.setApellido(jtfApellido.getText());
+                alu.setNombre(jtfNombre.getText());
+                alu.setEstado(jrbEstado.isSelected());
+                jdcNacimiento.setDate(Date.valueOf(alu.getFechaN()));
+                alu.toString();
+                JOptionPane.showMessageDialog(this, "Alumno agregado con éxito.");
+                alumnoData.guardarAlumno(alu);
+            }
+
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
