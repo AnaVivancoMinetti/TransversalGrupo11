@@ -164,7 +164,13 @@ public class menuPrincipal extends javax.swing.JFrame {
         //jpEscritorio.moveToFront(formMat);        
         
     }//GEN-LAST:event_jmiMateriaActionPerformed
-
+    private void jmiAlumnoMateriaActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        jpEscritorio.removeAll();
+        jpEscritorio.repaint();
+        alumnosPorMateria aluXMat = new alumnosPorMateria();
+        aluXMat.setVisible(true);
+        jpEscritorio.add(aluXMat);
+    }                                          
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem5ActionPerformed
